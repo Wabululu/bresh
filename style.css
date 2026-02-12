@@ -1092,7 +1092,7 @@ body.modal-active {
 
 .caption-text {
     background: linear-gradient(45deg, #ff6b8b, #ff9a9e, #ffd700);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
