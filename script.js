@@ -180,16 +180,16 @@ const herNameElement = document.getElementById('herName');
 
 // Photo data - Replace with actual photos of her
 const herPhotos = [
-    { id: 1, url: 'images/photo1.jpg', alt: 'Beautiful smile', caption: 'That smile that melts my heart' },
-    { id: 2, url: 'images/photo2.jpg', alt: 'Laughing moment', caption: 'Your laughter is my favorite sound' },
-    { id: 3, url: 'images/photo3.jpg', alt: 'Thoughtful look', caption: 'Lost in your beautiful thoughts' },
-    { id: 4, url: 'images/photo4.jpg', alt: 'Adventurous spirit', caption: 'Exploring the world together' },
-    { id: 5, url: 'images/photo5.jpg', alt: 'Casual beauty', caption: 'Everyday beauty that takes my breath away' },
-    { id: 6, url: 'images/photo6.jpg', alt: 'Special occasion', caption: 'Dressed up and stunning as always' },
-    { id: 7, url: 'images/photo7.jpg', alt: 'Natural beauty', caption: 'Just being you, which is perfect' },
-    { id: 8, url: 'images/photo8.jpg', alt: 'Fun moment', caption: 'Having fun and making memories' },
-    { id: 9, url: 'images/photo9.jpg', alt: 'Quiet moment', caption: 'Peaceful and beautiful' },
-    { id: 10, url: 'images/photo10.jpg', alt: 'Together', caption: 'My favorite place is with you' }
+    { id: 1, url: '/assets/images/pic003.jpeg', alt: 'Beautiful smile', caption: 'That smile that melts my heart' },
+    { id: 2, url: '/assets/images/pic004.jpeg', alt: 'Laughing moment', caption: 'Your laughter is my favorite sound' },
+    { id: 3, url: '/assets/images/pic001.png', alt: 'Thoughtful look', caption: 'Lost in your beautiful thoughts' },
+    { id: 4, url: '/assets/images/pic002.jpeg', alt: 'Adventurous spirit', caption: 'A quiet beauty that speaks to my heart.' },
+    { id: 5, url: '/assets/images/pic008.jpeg', alt: 'Casual beauty', caption: 'Everyday beauty that takes my breath away' },
+    { id: 6, url: '/assets/images/pic006.jpeg', alt: 'Special occasion', caption: 'Dressed up and stunning as always' },
+    { id: 7, url: '/assets/images/pic007.jpeg', alt: 'Natural beauty', caption: 'Just being you, which is perfect' },
+    { id: 8, url: '/assets/images/pic005.jpeg', alt: 'Fun moment', caption: 'Having fun and making memories' },
+    { id: 9, url: '/assets/images/pic009.jpeg', alt: 'Quiet moment', caption: 'Peaceful and beautiful' },
+    { id: 10, url: './assets/images/pic10.jpeg', alt: 'Together', caption: 'My favorite place is with you' }
 ];
 
 // Love letters content
@@ -234,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if user has scrolled to bottom for final surprise
     window.addEventListener('scroll', checkScrollForSurprise);
 });
+
 
 // Show name input modal with validation
 function showNameModal() {
@@ -327,6 +328,31 @@ function showNameModal() {
     `;
     document.head.appendChild(styleSheet);
 }
+//music unpause code
+// Function to play/unpause the background music
+function playMusic() {
+    const music = document.getElementById('backgroundMusic');
+    const musicBtn = document.getElementById('musicToggle');
+    const musicStatus = musicBtn.querySelector('.music-status');
+    const musicIcon = musicBtn.querySelector('i');
+    
+    if (music) {
+        music.play()
+            .then(() => {
+                // Update button to playing state
+                musicStatus.textContent = 'Playing';
+                musicIcon.className = 'fas fa-music fa-beat'; // Add beating animation
+                musicBtn.classList.add('playing');
+                console.log('🎵 Music is playing!');
+            })
+            .catch(error => {
+                console.error('Failed to play music:', error);
+                // Show error message to user
+                musicStatus.textContent = 'Click to play';
+                alert('Click anywhere to enable music playback');
+            });
+    }
+}
 
 // Validate the entered name
 function validateName() {
@@ -340,7 +366,7 @@ function validateName() {
     
     // Check if name is correct (case insensitive)
     const isCorrect = ALLOWED_VARIATIONS.some(variation => 
-        enteredName.toLowerCase() === variation.toLowerCase()
+        enteredName === variation
     );
     
     if (isCorrect) {
@@ -375,6 +401,7 @@ function validateName() {
         setTimeout(() => {
             nameModal.classList.add('hidden');
             createWelcomeCelebration();
+            playMusic();
         }, 2000);
         
     } else {
@@ -778,28 +805,154 @@ function getRandomHeartColor() {
     const colors = ['#ff6b8b', '#ff4757', '#9c88ff', '#ffd700', '#ff9a9e'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
+// Show RANDOM photo surprise - T
+function showRandomPhotoSurprise() {
+    // Pick a random photo from the array
+    const randomIndex = Math.floor(Math.random() * herPhotos.length);
+    const randomPhoto = herPhotos[randomIndex];
+    
+    console.log('Showing random photo:', randomPhoto.id, randomPhoto.caption);
+    
+    // Call showPhotoSurprise with the random photo ID
+    showPhotoSurprise(randomPhoto.id);
+}
+
+
+// Show random photo surprise
+function showPhotoSurprise(photoId) {
+    const photo = herPhotos.find(p => p.id == photoId) || herPhotos[0];
+    
+    // Create photo modal
+    const modal = document.createElement('div');
+    modal.className = 'photo-modal';
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
+    modal.style.zIndex = '2000';
+    modal.style.opacity = '0';
+    modal.style.transition = 'opacity 0.3s';
+    modal.style.backdropFilter = 'blur(5px)';
+    
+    modal.innerHTML = `
+        <div class="photo-modal-content" style="max-width: 90%; max-height: 90%; text-align: center;">
+            <div class="photo-container" style="margin: 0 auto 20px; max-width: 800px; max-height: 500px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                <img src="${photo.url}" alt="${photo.alt}" style="width: 100%; height: 100%; object-fit: contain; max-height: 500px;">
+            </div>
+            <h3 style="color: white; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">${photo.caption}</h3>
+            <p style="color: #ffd700; font-size: 1.2rem; margin-bottom: 20px;">✨ You are always beautiful in my eyes ✨</p>
+            <button class="close-photo-modal" style="background: #ff6b8b; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-size: 1rem; cursor: pointer; font-weight: 600; transition: transform 0.2s, background 0.2s; box-shadow: 0 5px 15px rgba(255,107,139,0.4);" 
+            onmouseover="this.style.background='#ff8ca3'; this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.background='#ff6b8b'; this.style.transform='scale(1)'">
+                <i class="fas fa-heart" style="margin-right: 8px;"></i>Close
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Fade in
+    setTimeout(() => {
+        modal.style.opacity = '1';
+    }, 10);
+    
+    // Add close event
+    const closeBtn = modal.querySelector('.close-photo-modal');
+    closeBtn.addEventListener('click', () => {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+        }, 300);
+    });
+    
+    // Close on background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                document.body.removeChild(modal);
+            }, 300);
+        }
+    });
+    
+    // Add celebration
+    createHeartExplosion();
+}
 
 // Initialize photo gallery
+// Initialize photo gallery with your real photos
 function initializeGallery() {
-    // If you have actual photos, use the herPhotos array
-    // For demo purposes, we'll create placeholder divs with gradients
-    herPhotos.forEach(photo => {
+    herPhotos.forEach((photo, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
         galleryItem.dataset.id = photo.id;
         
-        // Create placeholder
-        const placeholder = document.createElement('div');
-        placeholder.className = 'photo-placeholder';
-        placeholder.style.background = `linear-gradient(45deg, ${getRandomColor()}, ${getRandomColor()})`;
-        placeholder.innerHTML = `<i class="fas fa-heart"></i>`;
+        // Create image container
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'image-container';
         
-        // Create overlay
+        // Create actual image element
+        const img = new Image();
+        img.src = photo.url;
+        img.alt = photo.alt || 'Memory with you';
+        img.loading = 'lazy';
+        
+        // Add loading animation
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.4s ease';
+        
+        // When image loads successfully
+        img.onload = function() {
+            this.style.opacity = '1';
+            this.classList.add('loaded');
+            
+            // Remove loading spinner
+            const spinner = this.parentElement.querySelector('.loading-spinner');
+            if (spinner) spinner.remove();
+            
+            // Remove placeholder background
+            this.parentElement.style.background = 'none';
+        };
+        
+        // Error handling - if image fails to load, show fallback
+        img.onerror = function() {
+            this.style.display = 'none';
+            
+            // Create fallback with gradient and heart
+            const fallback = document.createElement('div');
+            fallback.className = 'photo-fallback';
+            fallback.style.background = `linear-gradient(135deg, #ff6b8b, #ff9a9e)`;
+            fallback.innerHTML = `
+                <i class="fas fa-heart" style="font-size: 3rem; color: white; opacity: 0.8;"></i>
+                <p style="color: white; margin-top: 10px;">${photo.caption}</p>
+            `;
+            
+            this.parentElement.appendChild(fallback);
+            
+            // Remove spinner
+            const spinner = this.parentElement.querySelector('.loading-spinner');
+            if (spinner) spinner.remove();
+        };
+        
+        // Loading spinner
+        const spinner = document.createElement('div');
+        spinner.className = 'loading-spinner';
+        spinner.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        
+        // Overlay with caption
         const overlay = document.createElement('div');
         overlay.className = 'photo-overlay';
         overlay.innerHTML = `<h3>${photo.caption}</h3>`;
         
-        galleryItem.appendChild(placeholder);
+        // Assemble the gallery item
+        imgContainer.appendChild(img);
+        imgContainer.appendChild(spinner);
+        galleryItem.appendChild(imgContainer);
         galleryItem.appendChild(overlay);
         galleryGrid.appendChild(galleryItem);
         
@@ -810,11 +963,7 @@ function initializeGallery() {
     });
 }
 
-// Get random color for photo placeholders
-function getRandomColor() {
-    const colors = ['#ff6b8b', '#ff9a9e', '#9c88ff', '#a1c4fd', '#ffd700', '#ffcc00'];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
+// No need for getRandomColor anymore, but keep it if you want to use it elsewhere
 
 // Set up all event listeners
 function setupEventListeners() {
@@ -1112,74 +1261,6 @@ function createShuffleEffect() {
         celebration.style.opacity = '0';
     }, 1500);
 }
-
-// Show random photo surprise
-function showRandomPhotoSurprise() {
-    const randomPhoto = herPhotos[Math.floor(Math.random() * herPhotos.length)];
-    showPhotoSurprise(randomPhoto.id);
-}
-
-// Show photo surprise
-function showPhotoSurprise(photoId) {
-    const photo = herPhotos.find(p => p.id == photoId) || herPhotos[0];
-    
-    // Create photo modal
-    const modal = document.createElement('div');
-    modal.className = 'photo-modal';
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-    modal.style.display = 'flex';
-    modal.style.alignItems = 'center';
-    modal.style.justifyContent = 'center';
-    modal.style.zIndex = '2000';
-    modal.style.opacity = '0';
-    modal.style.transition = 'opacity 0.3s';
-    
-    modal.innerHTML = `
-        <div class="photo-modal-content" style="max-width: 90%; max-height: 90%; text-align: center;">
-            <div class="photo-container" style="background: linear-gradient(45deg, ${getRandomColor()}, ${getRandomColor()}); width: 300px; height: 300px; border-radius: 20px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 60px;">
-                <i class="fas fa-heart"></i>
-            </div>
-            <h3 style="color: white; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 10px;">${photo.caption}</h3>
-            <p style="color: #ffd700; font-size: 1.2rem;">You are always beautiful in my eyes</p>
-            <button class="close-photo-modal" style="margin-top: 30px; background: #ff6b8b; color: white; border: none; padding: 12px 25px; border-radius: 50px; font-size: 1rem; cursor: pointer;">Close</button>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // Fade in
-    setTimeout(() => {
-        modal.style.opacity = '1';
-    }, 10);
-    
-    // Add close event
-    const closeBtn = modal.querySelector('.close-photo-modal');
-    closeBtn.addEventListener('click', () => {
-        modal.style.opacity = '0';
-        setTimeout(() => {
-            document.body.removeChild(modal);
-        }, 300);
-    });
-    
-    // Close on background click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.opacity = '0';
-            setTimeout(() => {
-                document.body.removeChild(modal);
-            }, 300);
-        }
-    });
-    
-    // Add celebration
-    createHeartExplosion();
-}
-
 // Open love letter - FIXED
 // Open love letter - DEBUGGED VERSION
 function openLoveLetter(letterId) {
@@ -1558,3 +1639,27 @@ function createFinalCelebration() {
         celebration.style.opacity = '0';
     }, 5000);
 }
+// ===== SCROLL REVEAL FOR VIDEO =====
+function revealOnScroll() {
+    const videoContainer = document.querySelector('.valentine-video-container');
+    
+    if (!videoContainer) return;
+    
+    const windowHeight = window.innerHeight;
+    const revealTop = videoContainer.getBoundingClientRect().top;
+    const revealPoint = 150;
+    
+    if (revealTop < windowHeight - revealPoint) {
+        videoContainer.classList.add('revealed');
+        
+        // Auto-play video when revealed
+        const video = document.querySelector('.valentine-video');
+        if (video && video.tagName === 'VIDEO') {
+            video.play();
+        }
+    }
+}
+
+// Listen for scroll
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);

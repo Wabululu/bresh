@@ -726,6 +726,8 @@ section {
 }
 
 /* Letters Section */
+/* ───── LETTERS SECTION - FULLY OPTIMIZED ───── */
+
 .letters-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -733,6 +735,7 @@ section {
     margin-bottom: 40px;
 }
 
+/* Letter Cards */
 .letter-card {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -819,7 +822,7 @@ section {
     transform: translateY(0);
 }
 
-/* Letter Modal - CORRECTED VERSION */
+/* ───── LETTER MODAL - COMPLETELY FIXED & OPTIMIZED ───── */
 .letter-modal {
     position: fixed;
     top: 0;
@@ -827,22 +830,30 @@ section {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.95);
-    display: none;
-    align-items: center;
-    justify-content: center;
     z-index: 2000;
     padding: 20px;
+    
+    /* Hidden by default */
+    display: none;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    
+    /* Center content */
+    align-items: center;
+    justify-content: center;
+    
+    /* Smooth transitions */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+/* ACTIVE STATE - Force show modal */
 .letter-modal.active {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
+/* Modal Content */
 .letter-modal .modal-content {
     background: linear-gradient(145deg, #1a1a2e, #16213e);
     width: 100%;
@@ -852,15 +863,16 @@ section {
     position: relative;
     border: 3px solid var(--primary-pink);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     max-height: 85vh;
     overflow-y: auto;
     margin: auto;
 }
 
+/* Modal Slide Animation */
 @keyframes modalSlideIn {
     0% { 
-        transform: translateY(-50px) scale(0.9); 
+        transform: translateY(-30px) scale(0.95); 
         opacity: 0; 
     }
     100% { 
@@ -869,6 +881,7 @@ section {
     }
 }
 
+/* Close Button */
 .letter-modal .close-modal {
     position: absolute;
     top: 15px;
@@ -893,6 +906,7 @@ section {
     transform: rotate(90deg);
 }
 
+/* Modal Header */
 .letter-modal .modal-header {
     text-align: center;
     margin-bottom: 25px;
@@ -920,9 +934,15 @@ section {
     animation: heartbeat 1.5s infinite;
 }
 
-.letter-modal .modal-hearts i:nth-child(2) { animation-delay: 0.3s; }
-.letter-modal .modal-hearts i:nth-child(3) { animation-delay: 0.6s; }
+.letter-modal .modal-hearts i:nth-child(2) { 
+    animation-delay: 0.3s; 
+}
 
+.letter-modal .modal-hearts i:nth-child(3) { 
+    animation-delay: 0.6s; 
+}
+
+/* Modal Body */
 .letter-modal .modal-body {
     padding: 30px 0;
 }
@@ -938,6 +958,7 @@ section {
     padding: 0 10px;
 }
 
+/* Modal Footer */
 .letter-modal .modal-footer {
     padding-top: 20px;
     text-align: center;
@@ -947,7 +968,7 @@ section {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Custom scrollbar for modal */
+/* Custom Scrollbar for Modal */
 .letter-modal .modal-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -966,21 +987,270 @@ section {
     background: var(--primary-red);
 }
 
-/* Modal overlay animation */
-.letter-modal::before {
-    content: '';
+/* ───── SPARKLE EFFECTS CONTAINER - UNIQUE ID ───── */
+#letter-opening-effects {
     position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2001;
+    display: none;
+    opacity: 0;
+}
+
+#letter-opening-effects.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ───── BODY SCROLL LOCK - MODAL OPEN STATE ───── */
+body.modal-active {
+    overflow: hidden !important;
+    padding-right: 15px; /* Prevents layout shift */
+}
+/* ===== VALENTINE VIDEO CONTAINER ===== */
+.valentine-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: linear-gradient(145deg, rgba(255,107,139,0.1), rgba(255,154,158,0.2));
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(255,107,139,0.3);
+    backdrop-filter: blur(10px);
+    animation: containerGlow 3s infinite alternate;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255,255,255,0.3);
+}
+
+.valentine-video {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 107, 139, 0.1) 0%, transparent 70%);
-    animation: modalOverlayGlow 3s infinite alternate;
+    object-fit: cover;
 }
 
-@keyframes modalOverlayGlow {
-    0% { opacity: 0.3; }
-    100% { opacity: 0.6; }
+/* ===== SPARKLE ANIMATIONS ===== */
+.sparkle-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 24px;
+    animation: float 3s infinite ease-in-out;
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(255,215,0,0.8);
+}
+
+.sparkle1 { top: 10%; left: 5%; animation: sparkleFloat 4s infinite; animation-delay: 0s; }
+.sparkle2 { top: 20%; right: 10%; animation: sparkleFloat 5s infinite; animation-delay: 1s; }
+.sparkle3 { bottom: 30%; left: 15%; animation: sparkleFloat 4.5s infinite; animation-delay: 2s; }
+.sparkle4 { top: 40%; right: 20%; animation: sparkleFloat 5.5s infinite; animation-delay: 0.5s; }
+.sparkle5 { bottom: 20%; right: 25%; animation: sparkleFloat 4.2s infinite; animation-delay: 1.5s; }
+.sparkle6 { top: 60%; left: 25%; animation: sparkleFloat 5.8s infinite; animation-delay: 2.5s; }
+.sparkle7 { bottom: 50%; right: 15%; animation: sparkleFloat 4.8s infinite; animation-delay: 0.8s; }
+.sparkle8 { top: 80%; left: 40%; animation: sparkleFloat 5.2s infinite; animation-delay: 1.8s; }
+.sparkle9 { bottom: 70%; left: 60%; animation: sparkleFloat 4.6s infinite; animation-delay: 2.2s; }
+.sparkle10 { top: 15%; right: 45%; animation: sparkleFloat 5.4s infinite; animation-delay: 1.2s; }
+
+/* ===== VIDEO CAPTION ===== */
+.video-caption {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 1.5rem;
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    text-shadow: 0 0 15px #ff6b8b, 0 0 30px #ff9a9e;
+    animation: captionPulse 2s infinite;
+}
+
+.caption-heart {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 2rem;
+    animation: heartBeat 1.5s infinite;
+}
+
+.caption-text {
+    background: linear-gradient(45deg, #ff6b8b, #ff9a9e, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes sparkleFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+        opacity: 1;
+        text-shadow: 0 0 20px #ff6b8b, 0 0 40px #ffd700;
+    }
+    100% {
+        transform: translateY(-60px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes containerGlow {
+    0% { box-shadow: 0 10px 40px rgba(255,107,139,0.3); }
+    100% { box-shadow: 0 10px 60px rgba(255,215,0,0.5); }
+}
+
+@keyframes captionPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+}
+
+/* ===== SCROLL REVEAL ANIMATION ===== */
+.valentine-video-container {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+.valentine-video-container.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== ADD MORE HEARTS FLOATING ===== */
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.floating-heart {
+    position: absolute;
+    color: #ff6b8b;
+    font-size: 20px;
+    animation: floatHeart 6s infinite;
+    opacity: 0;
+}
+
+/* ───── HEARTBEAT ANIMATION ───── */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* ───── RESPONSIVE DESIGN ───── */
+@media (max-width: 768px) {
+    .letters-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .letter-card {
+        min-height: 220px;
+        padding: 25px;
+    }
+    
+    .letter-title {
+        font-size: 1.8rem;
+    }
+    
+    .letter-modal .modal-content {
+        padding: 30px 20px;
+        max-height: 90vh;
+    }
+    
+    .letter-modal .modal-header h3 {
+        font-size: 2.5rem;
+    }
+    
+    .letter-modal .modal-body p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter-card {
+        min-height: 200px;
+        padding: 20px;
+    }
+    
+    .letter-seal {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    
+    .letter-title {
+        font-size: 1.6rem;
+    }
+    
+    .letter-preview {
+        font-size: 1rem;
+    }
+    
+    .letter-modal .modal-content {
+        padding: 25px 15px;
+    }
+    
+    .letter-modal .modal-header h3 {
+        font-size: 2rem;
+    }
+    
+    .letter-modal .modal-body p {
+        font-size: 1.1rem;
+    }
+    
+    .letter-modal .close-modal {
+        top: 10px;
+        right: 15px;
+        font-size: 28px;
+    }
+}
+
+/* ───── REDUCED MOTION ───── */
+@media (prefers-reduced-motion: reduce) {
+    .letter-card,
+    .letter-seal,
+    .letter-modal .modal-content,
+    .letter-modal .close-modal,
+    .letter-modal::before {
+        animation: none;
+        transition: none;
+    }
+    
+    .letter-card:hover {
+        transform: none;
+    }
 }
 
 /* Surprises Section */
@@ -1443,3 +1713,4 @@ section {
         gap: 15px;
     }
 }
+
