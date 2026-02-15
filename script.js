@@ -1,6 +1,6 @@
 // Configuration - CHANGE THESE TO HER ACTUAL NAME
 const HER_REAL_NAME = "Marvel"; // Change "Sarah" to her actual name
-const ALLOWED_VARIATIONS = ["marv", "MARVEL", "marvel", "Baby", "Love", "Sweetheart"]; 
+const ALLOWED_VARIATIONS = ["Sweerie", "sweerie", "marv", "Marv"]; 
 // Add her name variations, nicknames, or pet names
 
 // Sweet decline messages with emojis
