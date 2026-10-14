@@ -6,31 +6,61 @@
 }
 
 :root {
-    --primary-pink: #ff6b8b;
-    --primary-red: #ff4757;
-    --primary-purple: #9c88ff;
-    --primary-gold: #ffd700;
-    --soft-pink: #ffc8dd;
-    --deep-red: #ff2e63;
-    --light-bg: #fff0f5;
-    --dark-bg: #1a1a2e;
-    --gradient-1: linear-gradient(135deg, #ff6b8b 0%, #9c88ff 50%, #ffd700 100%);
-    --gradient-2: linear-gradient(45deg, #ff2e63, #ff6b8b, #ff9a9e);
-    --gradient-3: radial-gradient(circle at top right, #ff6b8b, transparent 50%),
-                  radial-gradient(circle at bottom left, #9c88ff, transparent 50%);
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    --shadow-light: 0 5px 15px rgba(255, 107, 139, 0.3);
-    --shadow-glow: 0 0 30px rgba(255, 107, 139, 0.5);
+    --primary-pink: #78c9a0;
+    --primary-red: #3e8f68;
+    --primary-purple: #9ad0b1;
+    --primary-gold: #d9f0d1;
+    --soft-pink: #dff8e9;
+    --deep-red: #2d6a4f;
+    --soft-lavender: #e8f6ef;
+    --light-bg: #f3fff7;
+    --dark-bg: #0d1d18;
+    --panel-bg: rgba(18, 35, 29, 0.74);
+    --panel-border: rgba(216, 255, 232, 0.18);
+    --glass: rgba(255, 255, 255, 0.06);
+    --gradient-1: linear-gradient(135deg, #5ca57d 0%, #8ec7a4 52%, #d9f0d1 100%);
+    --gradient-2: linear-gradient(45deg, #2d6a4f, #5ca57d, #bde5c6);
+    --gradient-3: radial-gradient(circle at top right, rgba(92,165,125,0.28), transparent 38%),
+                  radial-gradient(circle at bottom left, rgba(129,196,154,0.2), transparent 45%);
+    --shadow: 0 24px 50px rgba(6, 18, 14, 0.46);
+    --shadow-light: 0 14px 28px rgba(92, 165, 125, 0.22);
+    --shadow-glow: 0 0 32px rgba(92, 165, 125, 0.38);
     --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: var(--dark-bg);
+    background:
+        radial-gradient(circle at top, rgba(96, 168, 128, 0.32), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(113, 187, 142, 0.18), transparent 30%),
+        linear-gradient(180deg, #071812 0%, #0d2018 28%, #0a1411 100%);
     color: white;
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    letter-spacing: 0.01em;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.02), transparent 40%, rgba(255,255,255,0.02));
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Background Elements */
@@ -60,26 +90,27 @@ body {
 }
 
 .music-btn {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary-gold);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 215, 0, 0.9);
     border-radius: 50px;
     color: white;
-    width: 60px;
-    height: 60px;
-    font-size: 20px;
+    width: 72px;
+    height: 72px;
+    font-size: 21px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
-    box-shadow: var(--shadow);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
 }
 
 .music-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1) rotate(10deg);
+    background: rgba(255, 255, 255, 0.16);
+    transform: scale(1.08) rotate(12deg);
+    box-shadow: 0 0 30px rgba(255, 107, 139, 0.45);
 }
 
 .music-status {
@@ -91,7 +122,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 20px 52px;
     position: relative;
     z-index: 1;
 }
@@ -99,15 +130,63 @@ body {
 /* Header */
 .header {
     text-align: center;
-    padding: 40px 20px;
-    margin-bottom: 40px;
+    padding: 52px 20px 42px;
+    margin-bottom: 35px;
     position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 34px;
+    box-shadow: 0 26px 58px rgba(9, 15, 29, 0.42), inset 0 1px 0 rgba(255,255,255,0.12);
+    overflow: hidden;
+}
+
+.header::before,
+.header::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.header::before {
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 107, 139, 0.15);
+    top: -70px;
+    left: -40px;
+}
+
+.header::after {
+    width: 260px;
+    height: 260px;
+    background: rgba(156, 136, 255, 0.14);
+    bottom: -100px;
+    right: -40px;
+}
+
+.header-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fce7f3;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .heart-pulse {
     font-size: 60px;
     margin-bottom: 20px;
     animation: heartbeat 1.5s infinite, float 6s ease-in-out infinite;
+    text-shadow: 0 0 24px rgba(255, 107, 139, 0.65);
 }
 
 @keyframes heartbeat {
@@ -121,20 +200,22 @@ body {
 }
 
 .main-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 4rem;
-    background: var(--gradient-2);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
+    background: linear-gradient(135deg, #edf9f0 0%, #9ad2ae 28%, #dff8e9 56%, #bfe3cb 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 10px;
-    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 12px;
+    text-shadow: none;
+    letter-spacing: 0.04em;
 }
 
 .her-name {
-    color: var(--primary-gold);
-    text-decoration: underline;
-    text-decoration-color: var(--primary-pink);
+    color: #ebfff2;
+    text-decoration: none;
+    text-shadow: 0 0 18px rgba(125, 209, 160, 0.45);
     animation: nameGlow 3s infinite alternate;
 }
 
@@ -144,22 +225,37 @@ body {
 }
 
 .subtitle {
-    font-size: 1.3rem;
-    opacity: 0.9;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    opacity: 0.92;
     font-weight: 300;
+    letter-spacing: 0.04em;
 }
 
 /* Sections */
 section {
     margin-bottom: 80px;
-    padding: 40px 20px;
+    padding: 42px 22px 34px;
     border-radius: 30px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(180deg, rgba(18, 23, 39, 0.82), rgba(13, 17, 31, 0.78));
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--panel-border);
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
+}
+
+section:hover {
+    border-color: rgba(255, 215, 0, 0.26);
+    box-shadow: 0 28px 54px rgba(8, 12, 24, 0.48);
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5), transparent);
 }
 
 .section-header {
@@ -167,18 +263,41 @@ section {
     margin-bottom: 40px;
 }
 
+h1, h2, h3, h4, h5, h6,
+.main-title,
+.section-header h2,
+.letter-title,
+.name-modal-header h3,
+.footer-message,
+.infinite-heart p,
+.center-text,
+.card-header h3,
+.video-caption,
+.secret-notification h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: normal;
+    letter-spacing: 0.02em;
+}
+
 .section-header h2 {
-    font-family: 'Sacramento', cursive;
-    font-size: 3rem;
-    margin-bottom: 15px;
-    color: var(--primary-pink);
+    font-size: clamp(2.2rem, 4vw, 3.1rem);
+    margin-bottom: 12px;
+    color: #d9f3dd;
+    letter-spacing: 0.04em;
+    text-shadow: none;
 }
 
 .section-description {
-    font-size: 1.1rem;
-    opacity: 0.8;
-    max-width: 600px;
+    font-size: 1.05rem;
+    opacity: 0.82;
+    max-width: 660px;
     margin: 0 auto;
+    line-height: 1.7;
+}
+
+.section-header h2 i {
+    color: var(--primary-gold);
+    text-shadow: 0 0 18px rgba(255, 215, 0, 0.5);
 }
 
 /* Spin Section - REDESIGNED */
@@ -209,20 +328,20 @@ section {
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
-        #ff6b8b 0deg 36deg,
-        #ff9a9e 36deg 72deg,
-        #ffd700 72deg 108deg,
-        #9c88ff 108deg 144deg,
-        #a1c4fd 144deg 180deg,
-        #ff6b8b 180deg 216deg,
-        #ff9a9e 216deg 252deg,
-        #ffd700 252deg 288deg,
-        #9c88ff 288deg 324deg,
-        #a1c4fd 324deg 360deg
+        #6ca97e 0deg 36deg,
+        #8bc7a0 36deg 72deg,
+        #dfeecf 72deg 108deg,
+        #7ea888 108deg 144deg,
+        #c4e3ca 144deg 180deg,
+        #6ca97e 180deg 216deg,
+        #8bc7a0 216deg 252deg,
+        #dfeecf 252deg 288deg,
+        #7ea888 288deg 324deg,
+        #c4e3ca 324deg 360deg
     );
     box-shadow: 
-        inset 0 0 50px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(255, 107, 139, 0.4);
+        inset 0 0 50px rgba(10, 22, 18, 0.35),
+        0 0 40px rgba(123, 194, 144, 0.45);
     transition: transform 3s cubic-bezier(0.2, 0.8, 0.3, 1);
     overflow: hidden;
 }
@@ -232,8 +351,8 @@ section {
 }
 
 @keyframes wheelGlow {
-    0% { box-shadow: 0 0 30px rgba(255, 107, 139, 0.6); }
-    100% { box-shadow: 0 0 60px rgba(156, 136, 255, 0.8); }
+    0% { box-shadow: 0 0 30px rgba(115, 175, 131, 0.65); }
+    100% { box-shadow: 0 0 60px rgba(128, 196, 151, 0.85); }
 }
 
 .wheel-center {
@@ -263,9 +382,10 @@ section {
 }
 
 .center-text {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     color: var(--primary-purple);
 }
 
@@ -342,7 +462,7 @@ section {
 }
 
 .spin-btn {
-    background: var(--gradient-2);
+    background: linear-gradient(135deg, #3b7d5c 0%, #5fa682 30%, #9ad0b1 100%);
     color: white;
     border: none;
     padding: 20px 40px;
@@ -351,7 +471,7 @@ section {
     border-radius: 50px;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: var(--shadow);
+    box-shadow: 0 16px 30px rgba(65, 129, 99, 0.42), inset 0 1px 0 rgba(255,255,255,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -359,6 +479,7 @@ section {
     min-width: 250px;
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.04em;
 }
 
 .spin-btn::before {
@@ -476,8 +597,9 @@ section {
 }
 
 .card-header h3 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.2rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    font-size: 2.1rem;
     color: var(--primary-gold);
     text-align: center;
 }
@@ -521,11 +643,12 @@ section {
 }
 
 .description-text {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 1.6;
     text-align: center;
-    font-family: 'Great Vibes', cursive;
-    color: #fff;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    color: #f2fff6;
     animation: textGlow 3s infinite alternate;
     flex: 1;
     padding: 0 10px;
@@ -609,20 +732,29 @@ section {
 
 .gallery-item {
     position: relative;
-    border-radius: 20px;
+    border-radius: 22px;
     overflow: hidden;
     height: 280px;
-    background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
-    box-shadow: var(--shadow);
+    background: linear-gradient(135deg, rgba(255, 122, 162, 0.9), rgba(167, 139, 250, 0.82));
+    box-shadow: 0 18px 34px rgba(20, 10, 30, 0.35);
     cursor: pointer;
     transition: var(--transition);
     transform-style: preserve-3d;
     perspective: 1000px;
+    border: 1px solid rgba(255,255,255,0.18);
 }
 
 .gallery-item:hover {
-    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-10px) rotateX(4deg) rotateY(4deg);
+    box-shadow: 0 18px 38px rgba(255, 107, 139, 0.28);
+}
+
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 25%, rgba(0,0,0,0.28) 100%);
+    pointer-events: none;
 }
 
 .gallery-item img {
@@ -685,7 +817,7 @@ section {
 }
 
 .photo-overlay h3 {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.5rem;
     color: white;
 }
@@ -698,8 +830,8 @@ section {
 }
 
 .gallery-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     color: white;
     padding: 15px 25px;
     border-radius: 50px;
@@ -709,15 +841,17 @@ section {
     display: flex;
     align-items: center;
     gap: 10px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .gallery-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.14);
     transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.18);
 }
 
 .gallery-btn.surprise {
-    background: linear-gradient(45deg, var(--primary-red), var(--primary-pink));
+    background: linear-gradient(45deg, #3b785d, #8ec7a4);
     border: none;
 }
 
@@ -737,19 +871,20 @@ section {
 
 /* Letter Cards */
 .letter-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    border-radius: 22px;
     padding: 30px;
     cursor: pointer;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     min-height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 12px 22px rgba(5, 8, 18, 0.24);
 }
 
 .letter-card:hover {
@@ -794,7 +929,8 @@ section {
 }
 
 .letter-title {
-    font-family: 'Dancing Script', cursive;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: normal;
     font-size: 2rem;
     margin-bottom: 10px;
     color: var(--primary-gold);
@@ -915,11 +1051,12 @@ section {
 }
 
 .letter-modal .modal-header h3 {
-    font-family: 'Sacramento', cursive;
-    font-size: 3rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    font-size: 2.6rem;
     color: var(--primary-gold);
     margin-bottom: 15px;
-    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+    text-shadow: none;
 }
 
 .letter-modal .modal-hearts {
@@ -951,7 +1088,7 @@ section {
     font-size: 1.4rem;
     line-height: 1.8;
     text-align: center;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     color: #fff;
     white-space: pre-line;
     margin-bottom: 20px;
@@ -1077,9 +1214,9 @@ body.modal-active {
     margin-top: 20px;
     padding: 15px;
     font-size: 1.5rem;
-    font-family: 'Dancing Script', cursive;
-    color: white;
-    text-shadow: 0 0 15px #ff6b8b, 0 0 30px #ff9a9e;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #ecfff3;
+    text-shadow: 0 0 15px rgba(125, 204, 156, 0.8), 0 0 30px rgba(176, 232, 188, 0.9);
     animation: captionPulse 2s infinite;
 }
 
@@ -1091,10 +1228,10 @@ body.modal-active {
 }
 
 .caption-text {
-    background: linear-gradient(45deg, #ff6b8b, #ff9a9e, #ffd700);
+    background: linear-gradient(45deg, #7bc79e, #cfe8d5, #dfeecf);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 /* ===== ANIMATION KEYFRAMES ===== */
@@ -1106,7 +1243,7 @@ body.modal-active {
     50% {
         transform: translateY(-30px) rotate(180deg);
         opacity: 1;
-        text-shadow: 0 0 20px #ff6b8b, 0 0 40px #ffd700;
+        text-shadow: 0 0 20px rgba(104, 184, 137, 0.8), 0 0 40px rgba(221, 246, 226, 0.9);
     }
     100% {
         transform: translateY(-60px) rotate(360deg);
@@ -1155,7 +1292,7 @@ body.modal-active {
 
 .floating-heart {
     position: absolute;
-    color: #ff6b8b;
+    color: #85c79a;
     font-size: 20px;
     animation: floatHeart 6s infinite;
     opacity: 0;
@@ -1336,6 +1473,8 @@ body.modal-active {
     margin-top: 60px;
     position: relative;
     border-top: 2px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.03));
+    border-radius: 30px 30px 0 0;
 }
 
 .footer-hearts {
@@ -1355,7 +1494,7 @@ body.modal-active {
 .footer-message {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 .footer-date {
@@ -1413,7 +1552,7 @@ body.modal-active {
 
 .infinite-heart p {
     font-size: 1.3rem;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 /* Celebration Effects */
@@ -1480,7 +1619,7 @@ body.modal-active {
 }
 
 .name-modal-header h3 {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 2.5rem;
     color: var(--primary-gold);
 }

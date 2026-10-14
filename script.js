@@ -1,6 +1,6 @@
 // Configuration - CHANGE THESE TO HER ACTUAL NAME
-const HER_REAL_NAME = "Marvel"; // Change "Sarah" to her actual name
-const ALLOWED_VARIATIONS = ["Sweerie", "sweerie"]; 
+const HER_REAL_NAME = "Sweerie"; // Change to her actual name
+const ALLOWED_VARIATIONS = ["Sweerie", "sweerie", "SWEERIE"]; 
 // Add her name variations, nicknames, or pet names
 
 // Sweet decline messages with emojis
@@ -597,8 +597,8 @@ function createWelcomeCelebration() {
     message.style.transform = 'translate(-50%, -50%)';
     message.style.fontSize = '45px';
     message.style.fontWeight = 'bold';
-    message.style.color = '#ff6b8b';
-    message.style.textShadow = '0 0 30px #ff6b8b';
+    message.style.color = '#8ec7a1';
+    message.style.textShadow = '0 0 30px rgba(142, 199, 161, 0.9)';
     message.style.zIndex = '1002';
     message.style.pointerEvents = 'none';
     message.style.textAlign = 'center';
@@ -754,7 +754,7 @@ function createTwinklingStars() {
 function createGlowingParticles() {
     const container = document.querySelector('.glowing-particles');
     const particleCount = 50;
-    const colors = ['#ff6b8b', '#9c88ff', '#ffd700', '#ff4757'];
+    const colors = ['#7ab78d', '#9fd2b1', '#dfeecf', '#568e72'];
     
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -779,14 +779,14 @@ function createGlowingParticles() {
 function createLoveWords() {
     const container = document.querySelector('.love-words');
     const words = ['Love', 'Forever', 'Beautiful', 'Amazing', 'Perfect', 'Sweet', 'Adore', 'Cherish', 'Treasure', 'Heart'];
-    const colors = ['#ff6b8b', '#ffd700', '#9c88ff', '#ff4757', '#ff9a9e'];
+    const colors = ['#7ab78d', '#dfeecf', '#9fd2b1', '#568e72', '#cfead8'];
     
     for (let i = 0; i < 20; i++) {
         const word = document.createElement('div');
         word.textContent = words[Math.floor(Math.random() * words.length)];
         word.style.position = 'absolute';
         word.style.fontSize = `${Math.random() * 20 + 15}px`;
-        word.style.fontFamily = "'Dancing Script', cursive";
+        word.style.fontFamily = "'Cormorant Garamond', Georgia, serif";
         word.style.left = `${Math.random() * 100}vw`;
         word.style.top = `${Math.random() * 100}vh`;
         word.style.opacity = `${Math.random() * 0.3 + 0.1}`;
@@ -802,7 +802,7 @@ function createLoveWords() {
 
 // Get random heart color
 function getRandomHeartColor() {
-    const colors = ['#ff6b8b', '#ff4757', '#9c88ff', '#ffd700', '#ff9a9e'];
+    const colors = ['#7ab78d', '#568e72', '#9fd2b1', '#dfeecf', '#cfead8'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
 // Show RANDOM photo surprise - T
@@ -840,15 +840,15 @@ function showPhotoSurprise(photoId) {
     modal.style.backdropFilter = 'blur(5px)';
     
     modal.innerHTML = `
-        <div class="photo-modal-content" style="max-width: 90%; max-height: 90%; text-align: center;">
+        <div class="photo-modal-content" style="max-width: 90%; max-height: 90%; text-align: center; background: rgba(13, 23, 18, 0.96); border: 1px solid rgba(190, 230, 205, 0.28); border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.45);">
             <div class="photo-container" style="margin: 0 auto 20px; max-width: 800px; max-height: 500px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
                 <img src="${photo.url}" alt="${photo.alt}" style="width: 100%; height: 100%; object-fit: contain; max-height: 500px;">
             </div>
-            <h3 style="color: white; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">${photo.caption}</h3>
-            <p style="color: #ffd700; font-size: 1.2rem; margin-bottom: 20px;">✨ You are always beautiful in my eyes ✨</p>
-            <button class="close-photo-modal" style="background: #ff6b8b; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-size: 1rem; cursor: pointer; font-weight: 600; transition: transform 0.2s, background 0.2s; box-shadow: 0 5px 15px rgba(255,107,139,0.4);" 
-            onmouseover="this.style.background='#ff8ca3'; this.style.transform='scale(1.05)'" 
-            onmouseout="this.style.background='#ff6b8b'; this.style.transform='scale(1)'">
+            <h3 style="color: #ecfff3; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">${photo.caption}</h3>
+            <p style="color: #dfeecf; font-size: 1.2rem; margin-bottom: 20px;">✨ You are always beautiful in my eyes ✨</p>
+            <button class="close-photo-modal" style="background: linear-gradient(135deg, #6ca97e, #9fd2b1); color: #0d1d18; border: none; padding: 12px 30px; border-radius: 50px; font-size: 1rem; cursor: pointer; font-weight: 700; transition: transform 0.2s, filter 0.2s; box-shadow: 0 5px 15px rgba(119, 170, 138, 0.4);" 
+            onmouseover="this.style.filter='brightness(1.05)'; this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.filter='none'; this.style.transform='scale(1)'">
                 <i class="fas fa-heart" style="margin-right: 8px;"></i>Close
             </button>
         </div>
@@ -926,7 +926,7 @@ function initializeGallery() {
             // Create fallback with gradient and heart
             const fallback = document.createElement('div');
             fallback.className = 'photo-fallback';
-            fallback.style.background = `linear-gradient(135deg, #ff6b8b, #ff9a9e)`;
+            fallback.style.background = `linear-gradient(135deg, #5f9e76, #9fd2b1)`;
             fallback.innerHTML = `
                 <i class="fas fa-heart" style="font-size: 3rem; color: white; opacity: 0.8;"></i>
                 <p style="color: white; margin-top: 10px;">${photo.caption}</p>
@@ -1406,7 +1406,7 @@ function revealSecret(secretId) {
     notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
             <div style="font-size: 30px;">${secret.icon}</div>
-            <h4 style="margin: 0; font-family: 'Dancing Script', cursive; font-size: 1.8rem;">${secret.title}</h4>
+            <h4 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem;">${secret.title}</h4>
         </div>
         <p style="margin: 0; font-size: 1rem;">${secret.message}</p>
     `;
@@ -1490,8 +1490,8 @@ function createDoubleClickSurprise(x, y) {
     message.style.transform = 'translate(-50%, -50%)';
     message.style.fontSize = '40px';
     message.style.fontWeight = 'bold';
-    message.style.color = '#ffd700';
-    message.style.textShadow = '0 0 20px #ffd700';
+    message.style.color = '#dfeecf';
+    message.style.textShadow = '0 0 20px rgba(223, 238, 207, 0.8)';
     message.style.zIndex = '1002';
     message.style.pointerEvents = 'none';
     message.style.opacity = '0';
@@ -1581,8 +1581,8 @@ function createFinalCelebration() {
     message.style.transform = 'translate(-50%, -50%)';
     message.style.fontSize = '60px';
     message.style.fontWeight = 'bold';
-    message.style.color = '#ff6b8b';
-    message.style.textShadow = '0 0 30px #ff6b8b';
+    message.style.color = '#8ec7a1';
+    message.style.textShadow = '0 0 30px rgba(142, 199, 161, 0.9)';
     message.style.zIndex = '1002';
     message.style.pointerEvents = 'none';
     message.style.textAlign = 'center';
