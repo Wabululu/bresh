@@ -597,8 +597,8 @@ function createWelcomeCelebration() {
     message.style.transform = 'translate(-50%, -50%)';
     message.style.fontSize = '45px';
     message.style.fontWeight = 'bold';
-    message.style.color = '#8ec7a1';
-    message.style.textShadow = '0 0 30px rgba(142, 199, 161, 0.9)';
+    message.style.color = '#ff6b8b';
+    message.style.textShadow = '0 0 30px #ff6b8b';
     message.style.zIndex = '1002';
     message.style.pointerEvents = 'none';
     message.style.textAlign = 'center';
