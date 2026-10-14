@@ -180,16 +180,16 @@ const herNameElement = document.getElementById('herName');
 
 // Photo data - Replace with actual photos of her
 const herPhotos = [
-    { id: 1, url: '/assets/images/pic003.jpeg', alt: 'Beautiful smile', caption: 'That smile that melts my heart' },
-    { id: 2, url: '/assets/images/pic004.jpeg', alt: 'Laughing moment', caption: 'Your laughter is my favorite sound' },
-    { id: 3, url: '/assets/images/pic001.png', alt: 'Thoughtful look', caption: 'Lost in your beautiful thoughts' },
-    { id: 4, url: '/assets/images/pic002.jpeg', alt: 'Adventurous spirit', caption: 'A quiet beauty that speaks to my heart.' },
-    { id: 5, url: '/assets/images/pic008.jpeg', alt: 'Casual beauty', caption: 'Everyday beauty that takes my breath away' },
-    { id: 6, url: '/assets/images/pic006.jpeg', alt: 'Special occasion', caption: 'Dressed up and stunning as always' },
-    { id: 7, url: '/assets/images/pic007.jpeg', alt: 'Natural beauty', caption: 'Just being you, which is perfect' },
-    { id: 8, url: '/assets/images/pic005.jpeg', alt: 'Fun moment', caption: 'Having fun and making memories' },
-    { id: 9, url: '/assets/images/pic009.jpeg', alt: 'Quiet moment', caption: 'Peaceful and beautiful' },
-    { id: 10, url: './assets/images/pic10.jpeg', alt: 'Together', caption: 'My favorite place is with you' }
+    { id: 1, url: 'assets/images/pic003.jpeg', alt: 'Beautiful smile', caption: 'That smile that melts my heart' },
+    { id: 2, url: 'assets/images/pic004.jpeg', alt: 'Laughing moment', caption: 'Your laughter is my favorite sound' },
+    { id: 3, url: 'assets/images/pic001.jpeg', alt: 'Thoughtful look', caption: 'Lost in your beautiful thoughts' },
+    { id: 4, url: 'assets/images/pic002.jpeg', alt: 'Adventurous spirit', caption: 'A quiet beauty that speaks to my heart.' },
+    { id: 5, url: 'assets/images/pic008.jpeg', alt: 'Casual beauty', caption: 'Everyday beauty that takes my breath away' },
+    { id: 6, url: 'assets/images/pic006.jpeg', alt: 'Special occasion', caption: 'Dressed up and stunning as always' },
+    { id: 7, url: 'assets/images/pic007.jpeg', alt: 'Natural beauty', caption: 'Just being you, which is perfect' },
+    { id: 8, url: 'assets/images/pic005.jpeg', alt: 'Fun moment', caption: 'Having fun and making memories' },
+    { id: 9, url: 'assets/images/pic009.jpeg', alt: 'Quiet moment', caption: 'Peaceful and beautiful' },
+    { id: 10, url: 'assets/images/pic10.jpeg', alt: 'Together', caption: 'My favorite place is with you' }
 ];
 
 // Love letters content
